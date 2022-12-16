@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: root
       PGDATA: /data/postgres
     volumes:
-      - db:/var/lib/postgresql/data
+      - db:/data/postgres
     ports:
       - "5432:5432"
     networks:

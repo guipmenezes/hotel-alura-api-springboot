@@ -1,10 +1,17 @@
 package com.hotelalura;
 
+import jakarta.persistence.*;
+
 import java.sql.Date;
 import java.util.Objects;
 
+@Entity
+@Table(name="HA_HOSPEDE")
 public class Hospede {
 
+    @Id
+    @SequenceGenerator(name="hospede_id_sequence", sequenceName = "hospede_id_sequence", allocationSize = 1)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "hospede_id_sequence")
     private Integer id;
     private String nome;
     private String sobrenome;
