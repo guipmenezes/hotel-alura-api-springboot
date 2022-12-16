@@ -45,4 +45,9 @@ public class Main {
         hospede.setTelefone(request.telefone());
         hospedeRepository.save(hospede);
     }
+
+    @DeleteMapping("{hospedeId}")
+    public void deleteHospede(@PathVariable("hospedeId") Integer id) {
+        hospedeRepository.deleteById(id);
+    }
 }
