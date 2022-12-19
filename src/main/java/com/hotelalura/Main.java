@@ -1,7 +1,11 @@
 package com.hotelalura;
 
+import org.apache.coyote.Response;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -49,5 +53,18 @@ public class Main {
     @DeleteMapping("{hospedeId}")
     public void deleteHospede(@PathVariable("hospedeId") Integer id) {
         hospedeRepository.deleteById(id);
+    }
+
+    @PutMapping("{hospedeId}")
+    public ResponseEntity<Hospede> updateCostumer(@PathVariable(value = "hospedeId") Integer id, @RequestBody NewHospedeRequest request) {
+        Hospede hospede = hospedeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o hóspede de id: " + id));
+        hospede.setDataNascimento(request.data());
+        hospede.setNacionalidade(request.nacionalidade());
+        hospede.setNome(request.nome());
+        hospede.setSobrenome(request.sobrenome());
+        hospede.setTelefone(request.telefone());
+        final Hospede update = hospedeRepository.save(hospede);
+        return ResponseEntity.ok(update);
     }
 }
