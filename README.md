@@ -13,4 +13,4 @@ O projeto é a extensão de um projeto anterior, o projeto do Hotel Alura. Como 
 <br>
 <br>
 Como o próprio título diz, a arquitetura utilizada foi a REST (Representational State Transfer) e pode ser representada na imagem abaixo:
-<img align="center" src=Diagrama Backend API Hotel Alura.png/>
+<img align="center" src="Diagrama Backend API Hotel Alura.png"/>
