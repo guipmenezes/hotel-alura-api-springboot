@@ -1,5 +1,7 @@
-package com.hotelalura;
+package com.hotelalura.controller;
 
+import com.hotelalura.models.Hospede;
+import com.hotelalura.DAO.HospedeRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,9 +28,7 @@ public class HospedeController {
             String nome,
             String sobrenome,
             String telefone
-    ) {
-
-    }
+    ) {}
     @PostMapping
     public void addHospede(@RequestBody NewHospedeRequest request) {
         Hospede hospede = new Hospede();

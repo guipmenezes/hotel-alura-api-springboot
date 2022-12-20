@@ -1,8 +1,9 @@
-package com.hotelalura;
+package com.hotelalura.models;
 
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.util.Objects;
 
 @Entity
@@ -44,7 +45,7 @@ public class Hospede {
         return sobrenome;
     }
 
-    public Date getDataNascimento() {
+    public Date getDataNascimento() throws ParseException {
         return dataNascimento;
     }
 
