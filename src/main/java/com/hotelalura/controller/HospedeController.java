@@ -2,6 +2,7 @@ package com.hotelalura.controller;
 
 import com.hotelalura.models.Hospede;
 import com.hotelalura.DAO.HospedeRepository;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class HospedeController {
         return hospedeRepository.findAll();
     }
     record NewHospedeRequest(
-            Date data,
+            @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataNascimento,
             String nacionalidade,
             String nome,
             String sobrenome,
@@ -32,7 +33,7 @@ public class HospedeController {
     @PostMapping
     public void addHospede(@RequestBody NewHospedeRequest request) {
         Hospede hospede = new Hospede();
-        hospede.setDataNascimento(request.data());
+        hospede.setDataNascimento(request.dataNascimento());
         hospede.setNacionalidade(request.nacionalidade());
         hospede.setNome(request.nome());
         hospede.setSobrenome(request.sobrenome());
@@ -49,7 +50,7 @@ public class HospedeController {
     public ResponseEntity<Hospede> updateCostumer(@PathVariable(value = "hospedeId") Integer id, @RequestBody NewHospedeRequest request) {
         Hospede hospede = hospedeRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Não foi possível encontrar o hóspede de id: " + id));
-        hospede.setDataNascimento(request.data());
+        hospede.setDataNascimento(request.dataNascimento());
         hospede.setNacionalidade(request.nacionalidade());
         hospede.setNome(request.nome());
         hospede.setSobrenome(request.sobrenome());

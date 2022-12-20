@@ -2,6 +2,7 @@ package com.hotelalura.controller;
 
 import com.hotelalura.DAO.ReservaRepository;
 import com.hotelalura.models.Reserva;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,8 +25,9 @@ public class ReservaController {
     }
 
     record NewReservaRequest(
-        Date dataEntrada,
-        Date dataSaida,
+
+        @DateTimeFormat(pattern = "yyyy-MM-dd") Date dataEntrada,
+        @DateTimeFormat(pattern = "yyyy-MM-dd")Date dataSaida,
         Integer valor,
         String formaPagamento
     ){}
