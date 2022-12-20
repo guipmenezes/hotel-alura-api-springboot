@@ -13,4 +13,15 @@ O projeto é a extensão de um projeto anterior, o projeto do Hotel Alura. Como 
 <br>
 <br>
 Como o próprio título diz, a arquitetura utilizada foi a REST (Representational State Transfer) e pode ser representada na imagem abaixo:
+<br>
 <img align="center" src="Diagrama Backend API Hotel Alura.png"/>
+<br>
+Na camada de API (API Layer), temos os Controllers de Reserva e de Hospede.
+<br>
+Na camada de Negócio (Business Layer), temos as regras de negócio.
+<br>
+Na camada DAO (DAO Layer), temos a camada de acesso aos dados realizada por uma DAO, no caso do projeto é feita por interfaces repositório utilizando a API JPA.
+<br>
+Por último temos o banco de dados, que foi criado no PostgresSQL e possui duas tabelas relacionais, a tabela de Hospedes e a de Reserva, que possuem o id como chave primária e chave estrangeira, assim como o projeto Hotel Alura de desktop.
+
+
